@@ -7,26 +7,41 @@
  </head>
  <body>
    <h1>Vad ska vi göra idag?</h1>
+   <br>
+   <br>
    <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/1024px-Icon-round-Question_mark.svg.png height="120" width="120">
    <div class="inputSection">
      <div class="inputs">
        <input placeholder="Something"></input>
      </div>
-     <button class="addoption">Lägg till</button>
+     <button class="addOption">Lägg till</button>
    </div>
    <div class="resultSection"></div>
-   <button>GO!</button>
+   <button class="submit">GO!</button>
 
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-   <script>
-   $(function(){
-    $('.resultSection').hide()
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function() {
+     $('.resultSection').hide()
 
-    var add_otion = function() {
-      $('.inputs').append('<input></input>')
-      }
-      $('.addoption').click(add_otion)
-   })
-   </script>
- </body>
+   var add_option = function() {
+     $('.inputs').append('<input></input>')
+     }
+     $('.addOption').click(add_option)
+
+     var options = []
+     var submit = function() {
+       $('.inputSection').hide()
+         $('.resultSection').css('display', 'flex')
+         $('input').each(function() {
+           options.push($(this).val())
+         })
+         var winner = options[Math.floor(Math.random() * options.length)]
+       console.log(winner)
+       $('.resultSection').text(winner)
+     }
+     $('.submit').click(submit)
+  })
+  </script>
+</body>
 </html>
